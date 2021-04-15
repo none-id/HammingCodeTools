@@ -35,11 +35,7 @@ public class Info2HammingCode {
         Scanner tempScanner = new Scanner(System.in);
         int tempIn = tempScanner.nextInt();
 
-        if (tempIn == 1) {
-            parityModeOdd = true;
-        } else {
-            parityModeOdd = false;
-        }
+        parityModeOdd = tempIn == 1;
     }
 
 
@@ -65,17 +61,17 @@ public class Info2HammingCode {
         }
 
 
-        for (int count = 1, cLoc = -1;
+        for (int count = 1, cLoc;
              count <= k;
              count++) {
 
             cLoc = (int) pow(2, count - 1) - 1;
             boolean hasValue = Boolean.FALSE;
-            boolean eCGroup[] = CGroup.getCGroup(count);
+            boolean[] eCGroup = CGroup.getCGroup(count);
             char eCvalue = 0;
 
             for (int i = cLoc + 2;
-                 i <= finalCodeLenth + 1;
+                 i < finalCodeLenth + 1;
                  i++) {
                 if (eCGroup[i]) {
 
